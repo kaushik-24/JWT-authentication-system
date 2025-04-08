@@ -7,7 +7,6 @@ import Home from './components/Home'
 
 const App: React.FC = () => {
   return (
-    <>
     <Router>
     <Routes>
     <Route path="/login" element={<Login />} />
@@ -16,7 +15,6 @@ const App: React.FC = () => {
     <Route path="/" element={<Home />} />
     </Routes>
     </Router>
-    </>
   );
 }
 
