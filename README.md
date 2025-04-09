@@ -1,26 +1,19 @@
 <html>
-<head>
-  <title>Task Manager with Authentication</title>
-</head>
+
 <body>
   <h1>Task Manager with Authentication</h1>
-  <img src="https://via.placeholder.com/800x200.png?text=Task+Manager+Project" alt="Project Banner" width="800" height="200">
-  <!-- Replace the placeholder image URL with your own if desired -->
-
   <h2>Project Overview</h2>
   <p>
-    This project is a simple <b>Task Manager</b> application built with the <b>MERN stack (MongoDB, Express.js, React, Node.js)</b> and <b>MySQL</b> as the database. It includes user authentication using <b>JWT (JSON Web Tokens)</b> and a basic task management feature where authenticated users can create, view, and delete their tasks. The goal is to demonstrate a secure and functional full-stack application with a clean and user-friendly interface.
+    This project is a simple <b>Task Manager</b> application built with the <b>MERN stack (MySQL Express.js, React, Node.js)</b> and <b>MySQL</b> as the database. It includes user authentication using <b>JWT (JSON Web Tokens)</b> and a basic task management feature where authenticated users can create and delete their tasks. The goal is to demonstrate a secure and functional full-stack application with a clean and user-friendly interface.
   </p>
   <h3>Objective</h3>
   <p>Develop an application with:</p>
   <ul>
     <li>User authentication (registration and login).</li>
-    <li>A simple feature: Task Manager (add, view, delete tasks).</li>
-    <li>A responsive React frontend and a secure Node.js backend.</li>
+    <li>A simple feature: Task Manager (add & delete tasks).</li>
+    <li>A responsive React frontend and a secure Node.js backend using express.</li>
   </ul>
-
   <hr>
-
   <h2>Features</h2>
   <h3>User Authentication</h3>
   <ul>
@@ -31,7 +24,6 @@
   <h3>Task Manager</h3>
   <ul>
     <li><b>Add Task</b>: Authenticated users can create tasks with a title and description.</li>
-    <li><b>View Tasks</b>: Display a list of user-specific tasks.</li>
     <li><b>Delete Task</b>: Remove tasks by ID.</li>
   </ul>
 
@@ -51,26 +43,26 @@
   <h2>Project Structure</h2>
   <pre>
 task-manager/
-├── client/               <i># React frontend</i>
+├── frontend/             <i># React frontend</i>
 │   ├── public/           <i># Static assets</i>
 │   ├── src/              <i># React source code</i>
 │   │   ├── components/   <i># Reusable UI components</i>
 │   │   ├── pages/        <i># Login, Register, Dashboard pages</i>
 │   │   ├── context/      <i># State management (optional)</i>
-│   │   └── App.js        <i># Main app component</i>
+│   │   └── index.css      <i># main css</i> 
+│   │   └── main.tsx       <i># Main app component</i>
+│   │   └── App.tsx       <i># app component</i>
 │   └── package.json      <i># Frontend dependencies</i>
-├── server/               <i># Node.js backend</i>
+├── backend/               <i># express backend</i>
 │   ├── config/           <i># Database configuration</i>
-│   ├── models/           <i># MySQL table schemas (Users, Tasks)</i>
 │   ├── routes/           <i># API endpoints</i>
 │   ├── middleware/       <i># Authentication middleware</i>
-│   ├── controllers/      <i># Route handlers</i>
-│   └── server.js         <i># Entry point</i>
+│   └── server.tsx        <i># Entry point</i>
 └── README.md             <i># Project documentation</i>
+└── sql           <i># Project documentation</i>
+    ├── schema.sql <i>#sql code</i>
   </pre>
-
   <hr>
-
   <h2>API Endpoints</h2>
   <table border="1">
     <tr>
