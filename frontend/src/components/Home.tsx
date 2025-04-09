@@ -10,18 +10,20 @@ const Home: React.FC = () => {
           Organize your tasks easily. Sign up or log in to get started!
         </p>
         <div className="space-y-4">
-          <button>
           <Link
             to="/login"
-          >
+          > 
+            <button>
             Login
+            </button>
           </Link>
-          </button>
-          <button>
+         
           <Link
             to="/register"
           >
+          <button>
             Register
+          </button>
           </Link>
           </button>
         </div>
