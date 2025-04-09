@@ -34,7 +34,7 @@ const Register: React.FC = () => {
     <div className="h-screen flex justify-center items-center">
       <div className="max-w-md mx-auto p-6 border-l-8 border-b-8 shadow-lg shadow-black rounded-3xl">
         <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
-        {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
+        {error && <p className="text-red-900 mb-4 text-center">{error}</p>}
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
