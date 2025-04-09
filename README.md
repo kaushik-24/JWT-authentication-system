@@ -39,13 +39,17 @@ Develop an application with:
 ## Project Structure
 
 task-manager/
-├── client/               # React frontend
-│   ├── public/           # Static assets
+├── backend/               # React frontend
 │   ├── src/              # React source code
-│   │   ├── components/   # Reusable UI components
-│   │   ├── pages/        # Login, Register, Dashboard pages
-│   │   ├── context/      # State management (optional)
-│   │   └── App.js        # Main app component
+│   │   ├── components/   # Reusable UI components (Login, Register, Dashboard)
+|   |   |    ├── Login.tsx   
+|   |   |    ├── Register.tsx
+|   |   |    ├── Dashboard.tsx
+│   │   ├── context/      # State management 
+│   │   |    ├── AuthContext.tsx
+|   |   |
+│       └── App.tsx      # Main app component
+
 │   └── package.json      # Frontend dependencies
 ├── server/               # Node.js backend
 │   ├── config/           # Database configuration
