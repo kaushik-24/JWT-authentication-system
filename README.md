@@ -1,6 +1,5 @@
 # Task Manager with Authentication
 
-![Project Banner](https://via.placeholder.com/800x200.png?text=Task+Manager+Project) <!-- Optional: Replace with a real banner image if you have one -->
 
 ## Project Overview
 
