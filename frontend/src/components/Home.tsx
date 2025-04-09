@@ -25,7 +25,6 @@ const Home: React.FC = () => {
             Register
           </button>
           </Link>
-          </button>
         </div>
       </div>
     </div>
