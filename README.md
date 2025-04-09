@@ -2,6 +2,7 @@
 <p>This is a simple JWT authentication with CRUD operations. </p>
 
 <h5>File Structure</h5>
+<p>
 task-manager-app/
 ├── backend/                    # Backend (Node.js/Express) directory
 │   ├── config/                 # Configuration files
@@ -38,3 +39,4 @@ task-manager-app/
 ├── .gitignore                # Root-level gitignore
 ├── README.md                 # Project documentation
 └── demo-video.mp4            # Demonstration video (optional)
+</p>
