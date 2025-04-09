@@ -14,6 +14,6 @@ app.use(cors({ credentials: true, origin: 'https://task-manager-ruddy-rho.vercel
 app.use('/auth', authRoutes);
 app.use('/tasks', taskRoutes);
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, '../../frontend/build', 'index.html'));
 });
 app.listen(5000, () => console.log('Server running on port 5000'));
