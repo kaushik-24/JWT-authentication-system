@@ -39,26 +39,26 @@ Develop an application with:
 ## Project Structure
 
 task-manager/
-├── backend/               # React frontend
-│   ├── src/              # React source code
-│   │   ├── components/   # Reusable UI components (Login, Register, Dashboard)
-|   |   |    ├── Login.tsx   
-|   |   |    ├── Register.tsx
-|   |   |    ├── Dashboard.tsx
-│   │   ├── context/      # State management 
-│   │   |    ├── AuthContext.tsx
+├── backend/               # React frontend <br />
+│   ├── src/              # React source code <br />
+│   │   ├── components/   # Reusable UI components (Login, Register, Dashboard)<br />
+|   |   |    ├── Login.tsx   <br />
+|   |   |    ├── Register.tsx<br />
+|   |   |    ├── Dashboard.tsx<br />
+│   │   ├── context/      # State management<br /> 
+│   │   |    ├── AuthContext.tsx<br />
 |   |   |
-│       └── App.tsx      # Main app component
+│       └── App.tsx      # Main app component<br />
 
-│   └── package.json      # Frontend dependencies
-├── server/               # Node.js backend
-│   ├── config/           # Database configuration
-│   ├── models/           # MySQL table schemas (Users, Tasks)
-│   ├── routes/           # API endpoints
-│   ├── middleware/       # Authentication middleware
-│   ├── controllers/      # Route handlers
-│   └── server.js         # Entry point
-└── README.md             # Project documentation
+│   └── package.json      # Frontend dependencies<br />
+├── server/               # Node.js backend<br />
+│   ├── config/           # Database configuration<br />
+│   ├── models/           # MySQL table schemas (Users, Tasks)<br />
+│   ├── routes/           # API endpoints<br />
+│   ├── middleware/       # Authentication middleware<br />
+│   ├── controllers/      # Route handlers<br />
+│   └── server.js         # Entry point<br />
+└── README.md             # Project documentation<br />
 text
 
 ---
