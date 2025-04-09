@@ -1,17 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
-interface Task {
-  id: number;
-  title: string;
-  description: string;
-}
+import { useAuth } from '../context/AuthContext';
+import { Task } from '../types/interfaces';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard: React.FC = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const { tasks, setTasks, logout, user } = useAuth();
   const [newTask, setNewTask] = useState({ title: '', description: '' });
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const res = await axios.get('http://localhost:5000/tasks', { withCredentials: true });
+        setTasks(res.data);
+      } catch (error) {
+        console.error('Fetch tasks error:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
     fetchTasks();
   }, []);
 
@@ -32,6 +43,8 @@ const Dashboard: React.FC = () => {
       fetchTasks();
     } catch (error) {
       console.error('Add task error:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -41,50 +54,91 @@ const Dashboard: React.FC = () => {
       fetchTasks();
     } catch (error) {
       console.error('Delete task error:', error);
+    } finally {
+      setLoading(false);
     }
   };
+
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:5000/auth/logout', {}, { withCredentials: true });
-      window.location.href = '/login';
+      await logout();
+      navigate('/login');
     } catch (error) {
       console.error('Logout error:', error);
     }
   };
-
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="loader scale-150"></div>
+      </div>
+    );
+  }
   return (
-    <>
-    <div>
-      <h2>Task Manager</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="max-w-4xl mx-auto p-6">
+      <h2 className="text-2xl font-bold mb-4">Task Manager</h2>
+      {user && (
+        <p className="text-lg  mb-4">
+          Welcome, {user.username} 
+        </p>
+      )}
+     
+      {/* Task Creation Form */}
+      <form onSubmit={handleSubmit} className="mb-8">
         <input
           type="text"
           value={newTask.title}
           onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
           placeholder="Task Title"
           required
+          className="w-full p-3 mb-4 border border-black rounded focus:outline-none focus:ring-2 focus:ring-[#560bad]"
         />
         <textarea
           value={newTask.description}
           onChange={(e) => setNewTask({ ...newTask, description: e.target.value })}
           placeholder="Description"
+          className="w-full p-3 mb-4 border border-black rounded focus:outline-none focus:ring-2 focus:ring-[#560bad] min-h-[100px]"
         />
-        <button type="submit">Add Task</button>
+        <button
+          type="submit"
+          className=""
+        >
+          Add Task
+        </button>
       </form>
-      <div>
-        {tasks.map((task) => (
-          <div key={task.id}>
-            <h3>{task.title}</h3>
-            <p>{task.description}</p>
-            <button onClick={() => deleteTask(task.id)}>Delete</button>
-          </div>
-        ))}
-      </div>
+
+      {/* Task List */}
+      <h3 className="text-xl font-semibold mb-4">Your Tasks</h3>
+      {tasks.length === 0 ? (
+        <p className="text-gray-500">No tasks yet. Add one above!</p>
+      ) : (
+        <div className="space-y-4">
+          {tasks.map((task: Task) => (
+            <div
+              key={task.id}
+              className="border border-gray-200 p-4 rounded-3xl bg-white"
+            >
+              <h4 className="text-lg font-medium mb-2">{task.title}</h4>
+              <p className="text-gray-600 mb-3">{task.description || 'No description'}</p>
+              <button
+                onClick={() => deleteTask(task.id)}
+                className=""
+              >
+                Delete
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+       <button
+        onClick={handleLogout}
+        className=""
+      >
+        Logout
+      </button>
+
     </div>
-    <button onClick={handleLogout} style={{ marginBottom: '20px' }}>Logout</button>
-    </>
   );
 };
 
 export default Dashboard;
-

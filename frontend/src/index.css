@@ -1,1 +1,75 @@
-@import "tailwindcss" 
+@import "tailwindcss"; 
+
+.custom {
+  background: linear-gradient(360deg, white, #560bad);
+}
+
+/* From Uiverse.io by cssbuttons-io */ 
+button {
+  --color: #560bad;
+  font-family: inherit;
+  display: inline-block;
+  width: 8em;
+  height: 2.6em;
+  line-height: 2.5em;
+  margin: 20px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid var(--color);
+  transition: color 0.5s;
+  z-index: 1;
+  font-size: 17px;
+  border-radius: 10px;
+  font-weight: 500;
+  color: var(--color);
+}
+
+button:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--color);
+  height: 150px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+button:hover {
+  color: #fff;
+}
+
+button:before {
+  top: 100%;
+  left: 100%;
+  transition: all 0.7s;
+}
+
+button:hover:before {
+  top: -30px;
+  left: -30px;
+}
+
+button:active:before {
+  background: #3a0ca3;
+  transition: background 0s;
+}
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 55px;
+  aspect-ratio: 1;
+  --g1:conic-gradient(from  90deg at 3px  3px ,#0000 90deg,#000000 0);
+  --g2:conic-gradient(from -90deg at 22px 22px,#0000 90deg,#fff 0);
+  background:var(--g1),var(--g1),var(--g1), var(--g2),var(--g2),var(--g2);
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
+  animation: l7 1.5s infinite;
+}
+@keyframes l7 {
+  0%   {background-position:0    0   ,0 100%,100% 100% }
+  25%  {background-position:100% 0   ,0 100%,100% 100% }
+  50%  {background-position:100% 0   ,0 0   ,100% 100% }
+  75%  {background-position:100% 0   ,0 0   ,0    100% }
+  100% {background-position:100% 100%,0 0   ,0    100% }
+}
+

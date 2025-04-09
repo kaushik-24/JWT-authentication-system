@@ -41,4 +41,15 @@ router.delete('/:id', authenticateToken, async (req: AuthRequest, res: Response)
   }
 });
 
+router.get('/me', authenticateToken, async (req: Request, res: Response) => {
+  const userId = (req as any).user.id; // From authenticateToken middleware
+  try {
+    const [rows] = await db.query('SELECT id, username FROM users WHERE id = ?', [userId]);
+    const user = (rows as any[])[0];
+    if (!user) return res.status(404).json({ message: 'User not found' });
+    res.json({ user: { id: user.id, username: user.username } });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 export default router;
