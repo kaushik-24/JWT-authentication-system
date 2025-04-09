@@ -139,11 +139,30 @@ DATABASE_URL=url
       <ul>
         <li>Create a database named <code>task_manager_db</code>.</li>
         <li>Run the SQL schema from <code>sql/schema.sql</code> (if provided) to create <code>users</code> and <code>tasks</code> tables.</li>
+        <li>
+          <pre><code>
+          //inside schema.sql
+          CREATE DATABASE task_manager;
+          USE task_manager;
+          CREATE TABLE users (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(255) UNIQUE NOT NULL,
+            password VARCHAR(255) NOT NULL
+          );
+          CREATE TABLE tasks (
+          id INT AUTO_INCREMENT PRIMARY KEY,
+          user_id INT,
+          title VARCHAR(255) NOT NULL,
+          description TEXT,
+          FOREIGN KEY (user_id) REFERENCES users(id)
+          );
+        </pre>
+        </code>
+        </li>
       </ul>
-    </li>
-    <li>Start the backend server:
-      <pre><code>npm start</code></pre>
-    </li>
+          <li>Start the backend server:
+            <pre><code>npm start</code></pre>
+          </li>
   </ol>
 
   <h3>3. Frontend Setup</h3>
