@@ -30,10 +30,11 @@ router.post('/login', async (req: Request, res: Response) => {
     if (!isValid) return res.status(401).json({ message: 'Invalid credentials' });
 
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET as string, { expiresIn: '1h' });
-    res.cookie('token', token, { httpOnly: true,
+    res.cookie('token', token, { 
+      httpOnly: true,
       secure: true,//requires htpps
-      sameSite: 'none',
-      Partitioned: true,//enables chips for cross-site isolation
+      sameSite: 'none', //allows cross-site requests
+      partitioned: true,//enables chips for cross-site isolation
       maxAge: 60 * 60 * 100,
     });
     res.json({ message: 'Logged in successfully' });
