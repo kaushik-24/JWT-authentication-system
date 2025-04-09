@@ -13,6 +13,7 @@ app.use(cors({ credentials: true, origin: 'https://task-manager-ruddy-rho.vercel
 
 app.use('/auth', authRoutes);
 app.use('/tasks', taskRoutes);
+app.use(express.static(path.join(__dirname, '../../frontend/build')));
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../../frontend/build', 'index.html'));
 });
