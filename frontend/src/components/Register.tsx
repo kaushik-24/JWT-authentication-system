@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Register: React.FC = () => {
   const [formData, setFormData] = useState({ username: '', password: '' });
-
+  const navigate =  useNavigate();
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await axios.post('https://task-manager-g9gi.onrender.com/auth/register', formData);
-      window.location.href = '/login';
+       navigate('/login');
     } catch (error) {
       alert('Already registered!');
     }
