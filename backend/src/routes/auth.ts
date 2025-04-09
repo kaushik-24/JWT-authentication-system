@@ -34,7 +34,8 @@ router.post('/login', async (req: Request, res: Response) => {
       secure: true,//requires htpps
       sameSite: 'none',
       partitioned: true,//enables chips for cross-site isolation
-      maxAge: 60 * 60 * 100,} });
+      maxAge: 60 * 60 * 100,
+    });
     res.json({ message: 'Logged in successfully' });
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
