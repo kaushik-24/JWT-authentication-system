@@ -11,4 +11,3 @@ const dbase = mysql.createPool({
 });
 
 export default dbase;
-dbase.query('SELECT 1').then(() => console.log('DB connected')).catch(err => console.error(err));
