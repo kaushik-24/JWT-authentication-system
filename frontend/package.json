@@ -35,4 +35,10 @@
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0"
   }
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
