@@ -15,9 +15,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const userRes = await axios.get('http://localhost:5000/auth/me', { withCredentials: true });
+        const userRes = await axios.get('https://task-manager-g9gi.onrender.com/auth/me', { withCredentials: true });
         setUser(userRes.data.user);
-        const tasksRes = await axios.get('http://localhost:5000/tasks', { withCredentials: true });
+        const tasksRes = await axios.get('https://task-manager-g9gi.onrender.com/tasks', { withCredentials: true });
         setTasks(tasksRes.data);
       } catch (error: any) {
         // Handle 401/403 silently (unauthenticated user)
@@ -38,12 +38,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const login = async (username: string, password: string) => {
     try {
       const res = await axios.post(
-        'http://localhost:5000/auth/login',
+        'https://task-manager-g9gi.onrender.com/auth/login',
         { username, password },
         { withCredentials: true }
       );
       setUser(res.data.user);
-      const tasksRes = await axios.get('http://localhost:5000/tasks', { withCredentials: true });
+      const tasksRes = await axios.get('https://task-manager-g9gi.onrender.com/tasks', { withCredentials: true });
       setTasks(tasksRes.data);
     } catch (error) {
       throw error; // Let Login.tsx handle this
@@ -52,7 +52,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const logout = async () => {
     try {
-      await axios.post('http://localhost:5000/auth/logout', {}, { withCredentials: true });
+      await axios.post('https://task-manager-g9gi.onrender.com/auth/logout', {}, { withCredentials: true });
       setUser(null);
       setTasks([]);
     } catch (error) {

@@ -14,7 +14,7 @@ const Dashboard: React.FC = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get('http://localhost:5000/tasks', { withCredentials: true });
+        const res = await axios.get('https://task-manager-g9gi.onrender.com/tasks', { withCredentials: true });
         setTasks(res.data);
       } catch (error) {
         console.error('Fetch tasks error:', error);
@@ -28,7 +28,7 @@ const Dashboard: React.FC = () => {
 
   const fetchTasks = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/tasks', { withCredentials: true });
+      const res = await axios.get('https://task-manager-g9gi.onrender.com/tasks', { withCredentials: true });
       setTasks(res.data);
     } catch (error) {
       console.error('Fetch tasks error:', error);
@@ -38,7 +38,7 @@ const Dashboard: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/tasks', newTask, { withCredentials: true });
+      await axios.post('https://task-manager-g9gi.onrender.com/tasks', newTask, { withCredentials: true });
       setNewTask({ title: '', description: '' });
       fetchTasks();
     } catch (error) {
@@ -50,7 +50,7 @@ const Dashboard: React.FC = () => {
 
   const deleteTask = async (id: number) => {
     try {
-      await axios.delete(`http://localhost:5000/tasks/${id}`, { withCredentials: true });
+      await axios.delete(`https://task-manager-g9gi.onrender.com/tasks/${id}`, { withCredentials: true });
       fetchTasks();
     } catch (error) {
       console.error('Delete task error:', error);

@@ -8,7 +8,7 @@ const Register: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/auth/register', formData);
+      await axios.post('https://task-manager-g9gi.onrender.com/auth/register', formData);
       window.location.href = '/login';
     } catch (error) {
       alert('Already registered!');
