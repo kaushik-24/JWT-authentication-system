@@ -44,23 +44,23 @@
   <pre>
 task-manager/
 ├── frontend/             <i># React frontend</i>
-│   ├── public/           <i># Static assets</i>
 │   ├── src/              <i># React source code</i>
 │   │   ├── components/   <i># Reusable UI components</i>
-│   │   ├── pages/        <i># Login, Register, Dashboard pages</i>
-│   │   ├── context/      <i># State management (optional)</i>
+│   │   ├── context/      <i># State management </i>
 │   │   └── index.css      <i># main css</i> 
-│   │   └── main.tsx       <i># Main app component</i>
+│   │   └── main.tsx       <i># Main  component</i>
 │   │   └── App.tsx       <i># app component</i>
 │   └── package.json      <i># Frontend dependencies</i>
+|   
 ├── backend/               <i># express backend</i>
 │   ├── config/           <i># Database configuration</i>
-│   ├── routes/           <i># API endpoints</i>
+│   ├── routes/           <i># API endpoints - auth.ts & tasks.ts</i>
 │   ├── middleware/       <i># Authentication middleware</i>
+│   └── .env          <i># file for dataabse_url and JWT_secret for localhost</i>
 │   └── server.tsx        <i># Entry point</i>
 └── README.md             <i># Project documentation</i>
-└── sql           <i># Project documentation</i>
-    ├── schema.sql <i>#sql code</i>
+└── sql               <i># Project documentation</i>
+    ├── schema.sql    <i>#sql code</i>
   </pre>
   <hr>
   <h2>API Endpoints</h2>
@@ -123,26 +123,22 @@ cd task-manager
 
   <h3>2. Backend Setup</h3>
   <ol>
-    <li>Navigate to the <code>server</code> directory:
-      <pre><code>cd server</code></pre>
+    <li>Navigate to the <code>backend</code> directory:
+      <pre><code>cd backend</code></pre>
     </li>
     <li>Install dependencies:
       <pre><code>npm install</code></pre>
     </li>
-    <li>Create a <code>.env</code> file in the <code>server</code> directory with:
+    <li>Create a <code>.env</code> file in the <code>backend</code> directory with:
       <pre><code>
-PORT=5000
 JWT_SECRET=your_jwt_secret_here
-DB_HOST=localhost
-DB_USER=your_db_username
-DB_PASSWORD=your_db_password
-DB_NAME=task_manager_db
+DATABASE_URL=url
       </code></pre>
     </li>
     <li>Set up MySQL:
       <ul>
         <li>Create a database named <code>task_manager_db</code>.</li>
-        <li>Run the SQL schema from <code>server/models/schema.sql</code> (if provided) to create <code>users</code> and <code>tasks</code> tables.</li>
+        <li>Run the SQL schema from <code>sql/schema.sql</code> (if provided) to create <code>users</code> and <code>tasks</code> tables.</li>
       </ul>
     </li>
     <li>Start the backend server:
@@ -152,69 +148,31 @@ DB_NAME=task_manager_db
 
   <h3>3. Frontend Setup</h3>
   <ol>
-    <li>Navigate to the <code>client</code> directory:
-      <pre><code>cd client</code></pre>
+    <li>Navigate to the <code>frontend</code> directory:
+      <pre><code>cd frontend</code></pre>
     </li>
     <li>Install dependencies:
       <pre><code>npm install</code></pre>
     </li>
     <li>Start the React development server:
       <pre><code>npm start</code></pre>
-      The frontend will run on <a href="http://localhost:3000">http://localhost:3000</a>.
     </li>
   </ol>
 
   <h3>4. Test the Application</h3>
-  <p>Open your browser and navigate to <a href="http://localhost:3000">http://localhost:3000</a>. Register a new user, log in, and start managing tasks!</p>
-
+  <p>Open your browser and navigate to http://localhost:3000 [maybe different]. Register a new user, log in, and start managing tasks!</p>
   <hr>
-
-  <h2>Deployment (Optional)</h2>
+  <h2>Deployment </h2>
   <ul>
-    <li><b>Frontend</b>: Deployed on <a href="https://vercel.com">Vercel</a> or <a href="https://www.netlify.com">Netlify</a>.</li>
-    <li><b>Backend</b>: Deployed on <a href="https://render.com">Render</a> or <a href="https://railway.app">Railway</a>.</li>
-    <li><b>Live URLs</b>:
-      <ul>
-        <li>Frontend: <a href="https://your-frontend-url.vercel.app">https://your-frontend-url.vercel.app</a></li>
-        <li>Backend: <a href="https://your-backend-url.onrender.com">https://your-backend-url.onrender.com</a></li>
-      </ul>
-    </li>
+    <li><b>Frontend</b>: Deployed on <a href="https://vercel.com">Vercel</a> </li>
+    <li><b>Backend</b>: Deployed on <a href="https://render.com">Render</a></li>
+    <li><b>Database</b>: Deployed on <a href="https://railway.com">Railway</a></li><br />
+    <li><b>Live frontend URL</b>:  https://task-manager-ruddy-rho.vercel.app/</li>
+    <li><b>Live backend URL</b>:  https://task-manager-g9gi.onrender.com </li>
   </ul>
-
-  <hr>
-
-  <h2>Demo Video</h2>
-  <p>If hosting is not feasible, a demo video showcasing the application is available <a href="https://your-video-link.com">here</a>. It demonstrates:</p>
-  <ul>
-    <li>User registration and login.</li>
-    <li>Adding, viewing, and deleting tasks.</li>
-    <li>Error handling and UI responsiveness.</li>
-  </ul>
-
-  <hr>
-
-  <h2>Submission Details</h2>
-  <ul>
-    <li><b>GitHub Repository</b>: <a href="https://github.com/your-username/task-manager">https://github.com/your-username/task-manager</a></li>
-    <li><b>Live URLs</b>: (If deployed) See Deployment section above.</li>
-    <li><b>Demo Video</b>: (If local) See Demo Video section above.</li>
-  </ul>
-
-  <hr>
-
-  <h2>Evaluation Criteria</h2>
-  <ul>
-    <li><b>Functionality</b>: Meets all requirements (authentication, task management).</li>
-    <li><b>User Experience</b>: Simple and intuitive UI.</li>
-    <li><b>Code Quality</b>: Clean, commented, and well-structured code.</li>
-    <li><b>Deployment</b>: (Optional) Accessible and functional online.</li>
-  </ul>
-
-  <hr>
-
+  
   <h2>Contributing</h2>
   <p>Feel free to fork this repository and submit pull requests for improvements!</p>
-
   <h2>License</h2>
   <p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</p>
 
