@@ -3,11 +3,6 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 //for database user and password
-const dbase = mysql.createPool({
-  host: 'interchange.proxy.rlwy.net',
-  user: 'root',
-  password: process.env.DB_PASSWORD,
-  database: 'MySQL',
-});
+const dbase = mysql.createPool(process.env.DATABASE_URL as string);
 
 export default dbase;
